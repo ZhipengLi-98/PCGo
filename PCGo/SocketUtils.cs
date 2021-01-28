@@ -17,7 +17,7 @@ using System.Net.Sockets;
 using System.Threading;
 using PCGo;
 
-namespace SocketUtils
+namespace PCGo
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -92,7 +92,12 @@ namespace SocketUtils
             }
         }
 
-        
+        public void close()
+        {
+            // _socket.Send(Encoding.Default.GetBytes("quit"));
+            _socket.Shutdown(SocketShutdown.Both);
+            _socket.Close();
+        }
     }
 
     public interface INetworkCallback
